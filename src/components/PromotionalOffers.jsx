@@ -9,7 +9,7 @@ const PromotionalOffers = () => {
                     <p style={{ color: '#666', fontSize: '1.1rem', marginTop: '20px' }}>
                         Get 20% off on your first purchase! Use code: FIRSTART
                     </p>
-                    <a href="/shop" className="btn btn-primary" style={{ marginTop: '20px' }}>Shop Now</a>
+                    <a href="/gallery" className="btn btn-primary" style={{ marginTop: '20px' }}>Shop Now</a>
                 </div>
             </section>
 
