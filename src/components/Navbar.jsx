@@ -1,19 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
 const Navbar = () => {
-    const [isScrolled, setIsScrolled] = useState(false);
-
-    const handleScroll = () => {
-        const scrollPosition = window.scrollY;
-        setIsScrolled(scrollPosition > 500); // Change 500 to the height of your banner if needed
-    };
-
-    useEffect(() => {
-        window.addEventListener('scroll', handleScroll);
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-light" style={{ backgroundColor: '#f8f9fa' }}>
