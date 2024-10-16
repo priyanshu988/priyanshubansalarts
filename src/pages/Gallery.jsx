@@ -10,7 +10,7 @@ const artworksData = [
         price: 5000,         // Selling Price
         discountedPrice: 4000, // Discounted Price
         medium: 'Acrylic',
-        image: 'path/to/artwork1.jpg',
+        image: 'https://images.unsplash.com/photo-1610177498573-78deaa4a797b?q=80&w=2393&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     },
     {
         id: 2,
@@ -20,7 +20,7 @@ const artworksData = [
         price: 3000,         // Selling Price
         discountedPrice: 2500, // Discounted Price
         medium: 'Oil',
-        image: 'path/to/artwork2.jpg',
+        image: 'https://images.unsplash.com/photo-1610177498573-78deaa4a797b?q=80&w=2393&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     },
     // Add more artworks
 ];
