@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { FaShoppingCart } from 'react-icons/fa'; // Import the cart icon
 
 const Navbar = () => {
     return (
@@ -6,7 +7,7 @@ const Navbar = () => {
             <nav className="navbar navbar-expand-lg navbar-light" style={{ backgroundColor: '#f8f9fa' }}>
                 <div className="container-fluid">
                     <a className="navbar-brand" href="/" style={{ color: '#333', fontWeight: 'bold', fontSize: '1.5rem' }}>
-                        Priyanshu Bansal Arts
+                        PB Art Studio
                     </a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
@@ -33,12 +34,18 @@ const Navbar = () => {
                                     Contact
                                 </a>
                             </li>
+                            {/* Cart Icon */}
+                            <li className="nav-item">
+                                <a className="nav-link" href="/cart" style={{ color: '#333', fontWeight: 'bold', display: 'flex', alignItems: 'center' }}>
+                                    <FaShoppingCart style={{ marginRight: '8px' }} /> Cart
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
             </nav>
         </div>
-    )
+    );
 }
 
-export default Navbar
+export default Navbar;
