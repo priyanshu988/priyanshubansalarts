@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 const artworksData = [
     {
@@ -7,8 +8,8 @@ const artworksData = [
         title: 'Artwork 1',
         category: 'Landscape',
         dimensions: '24x36',
-        price: 5000,         // Selling Price
-        discountedPrice: 4000, // Discounted Price
+        price: 5000,
+        discountedPrice: 4000,
         medium: 'Acrylic',
         image: 'https://images.unsplash.com/photo-1610177498573-78deaa4a797b?q=80&w=2393&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     },
@@ -17,8 +18,8 @@ const artworksData = [
         title: 'Artwork 2',
         category: 'Abstract',
         dimensions: '18x24',
-        price: 3000,         // Selling Price
-        discountedPrice: 2500, // Discounted Price
+        price: 3000,
+        discountedPrice: 2500,
         medium: 'Oil',
         image: 'https://images.unsplash.com/photo-1610177498573-78deaa4a797b?q=80&w=2393&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     },
@@ -72,52 +73,59 @@ const Gallery = () => {
 
             <div className="container-fluid">
                 <div className="row">
-                    {/* Sidebar for Filters */}
+                    {/* Sidebar for Filters - Collapsible on mobile */}
                     <div className="col-md-3">
-                        <div className="filter-sidebar p-4" style={{ backgroundColor: '#f8f9fa', borderRadius: '10px', boxShadow: '0 0 10px rgba(0,0,0,0.1)', position: 'sticky', top: '0', height: '100vh' }}>
-                            <h4 className="mb-3" style={{ color: '#333' }}>Filter Artworks</h4>
+                        <div className="d-md-none mb-4">
+                            <button className="btn btn-secondary w-100" type="button" data-bs-toggle="collapse" data-bs-target="#filterSidebar" aria-expanded="false" aria-controls="filterSidebar">
+                                Filter Artworks
+                            </button>
+                        </div>
+                        <div className="collapse d-md-block" id="filterSidebar">
+                            <div className="filter-sidebar p-4" style={{ backgroundColor: '#f8f9fa', borderRadius: '10px', boxShadow: '0 0 10px rgba(0,0,0,0.1)', position: 'sticky', top: '0', height: '100vh' }}>
+                                <h4 className="mb-3" style={{ color: '#333' }}>Filter Artworks</h4>
 
-                            {/* Filter by Category */}
-                            <div className="mb-4">
-                                <label className="form-label">Category</label>
-                                <select className="form-select" name="category" value={filters.category} onChange={handleFilterChange}>
-                                    <option value="">All</option>
-                                    <option value="Landscape">Landscape</option>
-                                    <option value="Abstract">Abstract</option>
-                                    <option value="Portrait">Portrait</option>
-                                </select>
+                                {/* Filter by Category */}
+                                <div className="mb-4">
+                                    <label className="form-label">Category</label>
+                                    <select className="form-select" name="category" value={filters.category} onChange={handleFilterChange}>
+                                        <option value="">All</option>
+                                        <option value="Landscape">Landscape</option>
+                                        <option value="Abstract">Abstract</option>
+                                        <option value="Portrait">Portrait</option>
+                                    </select>
+                                </div>
+
+                                {/* Filter by Dimensions */}
+                                <div className="mb-4">
+                                    <label className="form-label">Dimensions</label>
+                                    <select className="form-select" name="dimensions" value={filters.dimensions} onChange={handleFilterChange}>
+                                        <option value="">All</option>
+                                        <option value="18x24">18x24</option>
+                                        <option value="24x36">24x36</option>
+                                        <option value="30x40">30x40</option>
+                                    </select>
+                                </div>
+
+                                {/* Filter by Price */}
+                                <div className="mb-4">
+                                    <label className="form-label">Max Price (INR)</label>
+                                    <input type="number" className="form-control" name="price" value={filters.price} onChange={handleFilterChange} placeholder="Enter max price" />
+                                </div>
+
+                                {/* Filter by Medium */}
+                                <div className="mb-4">
+                                    <label className="form-label">Medium</label>
+                                    <select className="form-select" name="medium" value={filters.medium} onChange={handleFilterChange}>
+                                        <option value="">All</option>
+                                        <option value="Acrylic">Acrylic</option>
+                                        <option value="Oil">Oil</option>
+                                        <option value="Watercolor">Watercolor</option>
+                                    </select>
+                                </div>
+
+                                <button className="btn btn-primary w-100" onClick={filterArtworks}>Apply Filters</button>
+                                <button className="btn btn-secondary w-100 mt-3" onClick={resetFilters}>Reset Filters</button>
                             </div>
-
-                            {/* Filter by Dimensions */}
-                            <div className="mb-4">
-                                <label className="form-label">Dimensions</label>
-                                <select className="form-select" name="dimensions" value={filters.dimensions} onChange={handleFilterChange}>
-                                    <option value="">All</option>
-                                    <option value="18x24">18x24</option>
-                                    <option value="24x36">24x36</option>
-                                    <option value="30x40">30x40</option>
-                                </select>
-                            </div>
-
-                            {/* Filter by Price */}
-                            <div className="mb-4">
-                                <label className="form-label">Max Price (INR)</label>
-                                <input type="number" className="form-control" name="price" value={filters.price} onChange={handleFilterChange} placeholder="Enter max price" />
-                            </div>
-
-                            {/* Filter by Medium */}
-                            <div className="mb-4">
-                                <label className="form-label">Medium</label>
-                                <select className="form-select" name="medium" value={filters.medium} onChange={handleFilterChange}>
-                                    <option value="">All</option>
-                                    <option value="Acrylic">Acrylic</option>
-                                    <option value="Oil">Oil</option>
-                                    <option value="Watercolor">Watercolor</option>
-                                </select>
-                            </div>
-
-                            <button className="btn btn-primary w-100" onClick={filterArtworks}>Apply Filters</button>
-                            <button className="btn btn-secondary w-100 mt-3" onClick={resetFilters}>Reset Filters</button>
                         </div>
                     </div>
 
@@ -172,6 +180,7 @@ const Gallery = () => {
                     </div>
                 </div>
             </div>
+            <Footer/>
         </div>
     );
 };
