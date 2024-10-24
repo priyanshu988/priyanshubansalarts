@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import Swal from 'sweetalert2';
 
 const CartPage = () => {
     // Initialize cart items from localStorage or use default values if not present
-    const initialCartItems = JSON.parse(localStorage.getItem('cartItems')) || [
-        { id: 1, title: 'Artwork 1', price: 5000, quantity: 1 },
-        { id: 2, title: 'Artwork 2', price: 3000, quantity: 1 },
-    ];
+    const initialCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
 
     const [cartItems, setCartItems] = useState(initialCartItems);
     const [step, setStep] = useState(1); // Controls the step in the process (1: Address, 2: Payment, 3: Final Bill)
@@ -17,14 +15,8 @@ const CartPage = () => {
     const [discount, setDiscount] = useState(0); // Store the discount percentage
     const [orderPlaced, setOrderPlaced] = useState(false);
 
-    // Sample valid coupon codes (You can modify or fetch these from a backend)
-    const validCoupons = {
-        'DISCOUNT10': 10,
-        'SAVE15': 15,
-    };
-
     // Calculate total price of the cart items
-    const totalPrice = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+    const totalPrice = cartItems.reduce((total, item) => total + item.discountedPrice * item.quantity, 0);
 
     // Calculate discounted price after applying coupon
     const discountedPrice = totalPrice - (totalPrice * discount / 100);
@@ -71,14 +63,35 @@ const CartPage = () => {
         setPaymentMethod(e.target.value);
     };
 
-    // Handle coupon code validation
-    const applyCoupon = () => {
-        if (validCoupons[couponCode.toUpperCase()]) {
-            setDiscount(validCoupons[couponCode.toUpperCase()]);
-            alert(`Coupon applied! You get ${validCoupons[couponCode.toUpperCase()]}% off.`);
-        } else {
-            alert('Invalid coupon code. Please try again.');
-            setDiscount(0); // Reset discount if the coupon is invalid
+    // Handle coupon code validation with backend
+    const applyCoupon = async () => {
+        try {
+            const response = await fetch(`http://localhost:8000/api/coupons/validate`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ code: couponCode, totalAmount: totalPrice }),
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                    let discount = (data.discountAmount/totalPrice)*100;
+
+                    setDiscount(discount);
+                    Swal.fire({
+                        title: 'Coupon applied!',
+                        text: `You get ${discount}% off.`,
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    })
+                    console.log(data)
+            } else {
+                alert('Error validating coupon. Please try again later.');
+            }
+        } catch (error) {
+            console.error('Error applying coupon:', error);
+            alert('Error applying coupon. Please try again later.');
         }
     };
 
@@ -179,7 +192,7 @@ const CartPage = () => {
                             {cartItems.map(item => (
                                 <li key={item.id} className="list-group-item d-flex justify-content-between align-items-center">
                                     {item.title}
-                                    <span className="fw-bold">INR {item.price}</span>
+                                    <span className="fw-bold">INR {item.discountedPrice}</span>
                                     <button className="btn btn-danger btn-sm" onClick={() => deleteItem(item.id)}>
                                         Remove
                                     </button>

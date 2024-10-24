@@ -26,13 +26,23 @@ const Sidebar = () => {
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/admin/customers">
-              Customers
+            <Link className="nav-link" to="/admin/management-coupon">
+              Coupon Management
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/admin/sales-reports">
-              Sales Reports
+            <Link className="nav-link" to="/admin/create-coupon">
+              Create Coupon
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/admin/manage-blogs">
+              Manage Blogs
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/admin/manage-testimonials">
+              Manage Testimonial
             </Link>
           </li>
         </ul>

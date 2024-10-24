@@ -9,6 +9,10 @@ import Contact from './pages/Contact';
 import Dashboard from './pages/Dashboard';
 import ManageArtworks from './pages/ManageArtworks';
 import Sidebar from './components/Sidebar';
+import ManageBlog from './pages/ManageBlog';
+import ManageTestimonials from './pages/ManageTestimonials';
+import CreateCoupon from './pages/CreateCoupon';
+import CouponManagement from './pages/CouponManagement';
 
 function AdminLayout() {
   return (
@@ -20,6 +24,10 @@ function AdminLayout() {
           <Routes>
             <Route path="" element={<Dashboard />} />
             <Route path="manage-artworks" element={<ManageArtworks />} />
+            <Route path="manage-blogs" element={<ManageBlog />} />
+            <Route path="manage-testimonials" element={<ManageTestimonials />} />
+            <Route path="create-coupon" element={<CreateCoupon />} />
+            <Route path="management-coupon" element={<CouponManagement />} />
           </Routes>
         </main>
       </div>
