@@ -1,10 +1,26 @@
 import React, { useState, useRef, useEffect } from 'react';
+import axios from 'axios';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 
 const FeaturedArtworks = () => {
+    const [artworks, setArtworks] = useState([]);
     const [showLeftArrow, setShowLeftArrow] = useState(false);
     const [showRightArrow, setShowRightArrow] = useState(true);
     const scrollContainer = useRef(null);
+
+    // Fetch random artworks from the backend
+    useEffect(() => {
+        const fetchArtworks = async () => {
+            try {
+                const response = await axios.get('http://localhost:8000/api/artworks?limit=5');
+                setArtworks(response.data); // Assuming the API response contains an array of artworks
+            } catch (error) {
+                console.error('Error fetching featured artworks:', error);
+            }
+        };
+
+        fetchArtworks();
+    }, []);
 
     const handleScroll = () => {
         const container = scrollContainer.current;
@@ -46,111 +62,52 @@ const FeaturedArtworks = () => {
                         style={{ marginTop: '30px', scrollBehavior: 'smooth', position: 'relative' }}
                         ref={scrollContainer}
                     >
-                        {/* Repeat for each artwork */}
-                        <div className="col-md-4 col-9 mb-4" style={{ flex: '0 0 auto' }}>
-                            <div className="card" style={{ boxShadow: '0 0 10px rgba(0,0,0,0.1)', borderRadius: '10px' }}>
-                                <img
-                                    src="https://images.unsplash.com/photo-1610177498573-78deaa4a797b?q=80&w=2393&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                    alt="Artwork 1"
-                                    className="card-img-top"
-                                    style={{ borderRadius: '10px 10px 0 0' }}
-                                />
-                                <div className="card-body">
-                                    <h3 className="card-title" style={{ color: '#333', fontWeight: 'bold' }}>
-                                        Artwork Title
-                                    </h3>
-                                    {/* Pricing Info */}
-                                    <p style={{ color: '#333' }}>
-                                        <span style={{ textDecoration: 'line-through', marginRight: '10px' }}>₹5000</span>
-                                        <span style={{ color: '#dc3545', marginRight: '10px' }}>20% Off</span>
-                                        <strong style={{ color: '#007bff' }}>₹4000</strong>
-                                    </p>
-                                    {/* Buttons */}
-                                    <div className="buttons mt-3">
-                                        <button
-                                            className="btn btn-primary"
-                                            style={{ marginRight: '10px', backgroundColor: '#007bff', border: 'none' }}
-                                        >
-                                            Buy Now
-                                        </button>
-                                        <button className="btn btn-outline-secondary">
-                                            Add to Cart
-                                        </button>
+                        {artworks.length === 0 ? (
+                            <p>Loading artworks...</p>
+                        ) : (
+                            artworks.map((artwork) => {
+                                const discountPercentage = ((artwork.price - artwork.discountedPrice) / artwork.price) * 100;
+                                return (
+                                    <div className="col-md-4 col-9 mb-4" style={{ flex: '0 0 auto' }} key={artwork.id}>
+                                        <div className="card" style={{ boxShadow: '0 0 10px rgba(0,0,0,0.1)', borderRadius: '10px' }}>
+                                            <img
+                                                src={artwork.image}
+                                                alt={artwork.title}
+                                                className="card-img-top"
+                                                style={{ borderRadius: '10px 10px 0 0' }}
+                                            />
+                                            <div className="card-body">
+                                                <h3 className="card-title" style={{ color: '#333', fontWeight: 'bold' }}>
+                                                    {artwork.title}
+                                                </h3>
+                                                {/* Pricing Info */}
+                                                <p style={{ color: '#333', marginBottom: '5px' }}>
+                                                    <span style={{ textDecoration: 'line-through', marginRight: '10px' }}>
+                                                        ₹{artwork.price}
+                                                    </span>
+                                                    <strong style={{ color: '#007bff' }}>₹{artwork.discountedPrice}</strong>
+                                                </p>
+                                                <p style={{ color: '#dc3545', fontWeight: 'bold' }}>
+                                                    {Math.round(discountPercentage)}% Off
+                                                </p>
+                                                {/* Buttons */}
+                                                <div className="buttons mt-3">
+                                                    <button
+                                                        className="btn btn-primary"
+                                                        style={{ marginRight: '10px', backgroundColor: '#007bff', border: 'none' }}
+                                                    >
+                                                        Buy Now
+                                                    </button>
+                                                    <button className="btn btn-outline-secondary">
+                                                        Add to Cart
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Add more artworks similarly */}
-                        <div className="col-md-4 col-9 mb-4" style={{ flex: '0 0 auto' }}>
-                            <div className="card" style={{ boxShadow: '0 0 10px rgba(0,0,0,0.1)', borderRadius: '10px' }}>
-                                <img
-                                    src="https://images.unsplash.com/photo-1610177498573-78deaa4a797b?q=80&w=2393&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                    alt="Artwork 2"
-                                    className="card-img-top"
-                                    style={{ borderRadius: '10px 10px 0 0' }}
-                                />
-                                <div className="card-body">
-                                    <h3 className="card-title" style={{ color: '#333', fontWeight: 'bold' }}>
-                                        Artwork Title
-                                    </h3>
-                                    {/* Pricing Info */}
-                                    <p style={{ color: '#333' }}>
-                                        <span style={{ textDecoration: 'line-through', marginRight: '10px' }}>₹6000</span>
-                                        <span style={{ color: '#dc3545', marginRight: '10px' }}>15% Off</span>
-                                        <strong style={{ color: '#007bff' }}>₹5100</strong>
-                                    </p>
-                                    {/* Buttons */}
-                                    <div className="buttons mt-3">
-                                        <button
-                                            className="btn btn-primary"
-                                            style={{ marginRight: '10px', backgroundColor: '#007bff', border: 'none' }}
-                                        >
-                                            Buy Now
-                                        </button>
-                                        <button className="btn btn-outline-secondary">
-                                            Add to Cart
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="col-md-4 col-9 mb-4" style={{ flex: '0 0 auto' }}>
-                            <div className="card" style={{ boxShadow: '0 0 10px rgba(0,0,0,0.1)', borderRadius: '10px' }}>
-                                <img
-                                    src="https://images.unsplash.com/photo-1610177498573-78deaa4a797b?q=80&w=2393&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                    alt="Artwork 3"
-                                    className="card-img-top"
-                                    style={{ borderRadius: '10px 10px 0 0' }}
-                                />
-                                <div className="card-body">
-                                    <h3 className="card-title" style={{ color: '#333', fontWeight: 'bold' }}>
-                                        Artwork Title
-                                    </h3>
-                                    {/* Pricing Info */}
-                                    <p style={{ color: '#333' }}>
-                                        <span style={{ textDecoration: 'line-through', marginRight: '10px' }}>₹8000</span>
-                                        <span style={{ color: '#dc3545', marginRight: '10px' }}>10% Off</span>
-                                        <strong style={{ color: '#007bff' }}>₹7200</strong>
-                                    </p>
-                                    {/* Buttons */}
-                                    <div className="buttons mt-3">
-                                        <button
-                                            className="btn btn-primary"
-                                            style={{ marginRight: '10px', backgroundColor: '#007bff', border: 'none' }}
-                                        >
-                                            Buy Now
-                                        </button>
-                                        <button className="btn btn-outline-secondary">
-                                            Add to Cart
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* More artworks can be added here */}
+                                );
+                            })
+                        )}
                     </div>
                 </div>
             </section>

@@ -1,40 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
-const artworksData = [
-    {
-        id: 1,
-        title: 'Artwork 1',
-        category: 'Landscape',
-        dimensions: '24x36',
-        price: 5000,
-        discountedPrice: 4000,
-        medium: 'Acrylic',
-        image: 'https://images.unsplash.com/photo-1610177498573-78deaa4a797b?q=80&w=2393&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    },
-    {
-        id: 2,
-        title: 'Artwork 2',
-        category: 'Abstract',
-        dimensions: '18x24',
-        price: 3000,
-        discountedPrice: 2500,
-        medium: 'Oil',
-        image: 'https://images.unsplash.com/photo-1610177498573-78deaa4a797b?q=80&w=2393&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    },
-    // Add more artworks
-];
-
 const Gallery = () => {
+    const [artworks, setArtworks] = useState([]); // Store all artworks fetched from the server
+    const [sortedArtworks, setSortedArtworks] = useState([]); // Store filtered artworks
     const [filters, setFilters] = useState({
         category: '',
         dimensions: '',
         price: '',
         medium: ''
     });
+    const [filterOptions, setFilterOptions] = useState({
+        categories: [],
+        dimensions: [],
+        mediums: []
+    });
 
-    const [sortedArtworks, setSortedArtworks] = useState(artworksData);
+    // Fetch artworks from the backend when the component mounts
+    useEffect(() => {
+        const fetchArtworks = async () => {
+            try {
+                const response = await fetch('http://localhost:8000/api/artworks'); // Adjust URL if needed
+                const data = await response.json();
+                setArtworks(data);
+                setSortedArtworks(data); // Initially, no filters are applied
+
+                // Generate filter options dynamically
+                const categories = [...new Set(data.map(artwork => artwork.category))];
+                const dimensions = [...new Set(data.map(artwork => `${artwork.length}x${artwork.width}`))];
+                const mediums = [...new Set(data.map(artwork => artwork.medium))];
+
+                setFilterOptions({ categories, dimensions, mediums });
+            } catch (error) {
+                console.error("Error fetching artworks: ", error);
+            }
+        };
+
+        fetchArtworks();
+    }, []);
 
     const handleFilterChange = (e) => {
         const { name, value } = e.target;
@@ -45,11 +49,11 @@ const Gallery = () => {
     };
 
     const filterArtworks = () => {
-        let filtered = artworksData.filter(artwork => {
+        let filtered = artworks.filter(artwork => {
             return (
                 (filters.category === '' || artwork.category === filters.category) &&
-                (filters.dimensions === '' || artwork.dimensions === filters.dimensions) &&
-                (filters.price === '' || artwork.price <= parseInt(filters.price)) &&
+                (filters.dimensions === '' || `${artwork.length}x${artwork.width}` === filters.dimensions) &&
+                (filters.price === '' || artwork.discountedPrice <= parseInt(filters.price)) &&
                 (filters.medium === '' || artwork.medium === filters.medium)
             );
         });
@@ -58,7 +62,7 @@ const Gallery = () => {
 
     const resetFilters = () => {
         setFilters({ category: '', dimensions: '', price: '', medium: '' });
-        setSortedArtworks(artworksData);
+        setSortedArtworks(artworks);
     };
 
     return (
@@ -89,20 +93,20 @@ const Gallery = () => {
                                     <label className="form-label">Category</label>
                                     <select className="form-select" name="category" value={filters.category} onChange={handleFilterChange}>
                                         <option value="">All</option>
-                                        <option value="Landscape">Landscape</option>
-                                        <option value="Abstract">Abstract</option>
-                                        <option value="Portrait">Portrait</option>
+                                        {filterOptions.categories.map((category, index) => (
+                                            <option key={index} value={category}>{category}</option>
+                                        ))}
                                     </select>
                                 </div>
 
                                 {/* Filter by Dimensions */}
                                 <div className="mb-4">
-                                    <label className="form-label">Dimensions</label>
+                                    <label className="form-label">Dimensions (cm)</label>
                                     <select className="form-select" name="dimensions" value={filters.dimensions} onChange={handleFilterChange}>
                                         <option value="">All</option>
-                                        <option value="18x24">18x24</option>
-                                        <option value="24x36">24x36</option>
-                                        <option value="30x40">30x40</option>
+                                        {filterOptions.dimensions.map((dimension, index) => (
+                                            <option key={index} value={dimension}>{dimension}</option>
+                                        ))}
                                     </select>
                                 </div>
 
@@ -117,9 +121,9 @@ const Gallery = () => {
                                     <label className="form-label">Medium</label>
                                     <select className="form-select" name="medium" value={filters.medium} onChange={handleFilterChange}>
                                         <option value="">All</option>
-                                        <option value="Acrylic">Acrylic</option>
-                                        <option value="Oil">Oil</option>
-                                        <option value="Watercolor">Watercolor</option>
+                                        {filterOptions.mediums.map((medium, index) => (
+                                            <option key={index} value={medium}>{medium}</option>
+                                        ))}
                                     </select>
                                 </div>
 
@@ -165,7 +169,7 @@ const Gallery = () => {
                                                 </p>
 
                                                 <p className="card-text" style={{ color: '#666' }}>Medium: {artwork.medium}</p>
-                                                <p className="card-text" style={{ color: '#666' }}>Dimensions: {artwork.dimensions}</p>
+                                                <p className="card-text" style={{ color: '#666' }}>Dimensions: {artwork.length}x{artwork.width}</p>
 
                                                 <div className="d-grid gap-2">
                                                     <button className="btn btn-success">Add to Cart</button>
@@ -180,7 +184,7 @@ const Gallery = () => {
                     </div>
                 </div>
             </div>
-            <Footer/>
+            <Footer />
         </div>
     );
 };
