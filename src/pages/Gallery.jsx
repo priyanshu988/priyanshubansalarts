@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import Swal from 'sweetalert2';  // Import SweetAlert2
 
 const Gallery = () => {
-    const [artworks, setArtworks] = useState([]); // Store all artworks fetched from the server
-    const [sortedArtworks, setSortedArtworks] = useState([]); // Store filtered artworks
+    const [artworks, setArtworks] = useState([]);
+    const [sortedArtworks, setSortedArtworks] = useState([]);
     const [filters, setFilters] = useState({
         category: '',
         dimensions: '',
@@ -17,16 +18,14 @@ const Gallery = () => {
         mediums: []
     });
 
-    // Fetch artworks from the backend when the component mounts
     useEffect(() => {
         const fetchArtworks = async () => {
             try {
-                const response = await fetch('http://localhost:8000/api/artworks'); // Adjust URL if needed
+                const response = await fetch('http://localhost:8000/api/artworks');
                 const data = await response.json();
                 setArtworks(data);
-                setSortedArtworks(data); // Initially, no filters are applied
+                setSortedArtworks(data);
 
-                // Generate filter options dynamically
                 const categories = [...new Set(data.map(artwork => artwork.category))];
                 const dimensions = [...new Set(data.map(artwork => `${artwork.length}x${artwork.width}`))];
                 const mediums = [...new Set(data.map(artwork => artwork.medium))];
@@ -65,6 +64,43 @@ const Gallery = () => {
         setSortedArtworks(artworks);
     };
 
+    const addToCart = (artwork) => {
+        const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        const itemInCart = cartItems.find(item => item.id === artwork.id);
+
+        if (itemInCart) {
+            itemInCart.quantity += 1;
+        } else {
+            cartItems.push({ ...artwork, quantity: 1 });
+        }
+
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+        Swal.fire({
+            title: 'Added to Cart!',
+            text: `${artwork.title} has been added to your cart.`,
+            icon: 'success',
+            confirmButtonText: 'OK'
+        });
+    };
+
+    const buyNow = (artwork) => {
+        const newCartItem = [{ ...artwork, quantity: 1 }];
+        localStorage.setItem('cartItems', JSON.stringify(newCartItem));
+
+        Swal.fire({
+            title: 'Buy Now Successful!',
+            text: `${artwork.title} is now in your cart! Proceed to checkout.`,
+            icon: 'success',
+            confirmButtonText: 'Proceed to Checkout'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Optional: Redirect to the checkout page
+                window.location.href = '/cart';
+            }
+        });
+    };
+
     return (
         <div>
             <Navbar />
@@ -77,7 +113,7 @@ const Gallery = () => {
 
             <div className="container-fluid">
                 <div className="row">
-                    {/* Sidebar for Filters - Collapsible on mobile */}
+                    {/* Sidebar for Filters */}
                     <div className="col-md-3">
                         <div className="d-md-none mb-4">
                             <button className="btn btn-secondary w-100" type="button" data-bs-toggle="collapse" data-bs-target="#filterSidebar" aria-expanded="false" aria-controls="filterSidebar">
@@ -145,7 +181,6 @@ const Gallery = () => {
                                             <div className="card-body text-center">
                                                 <h5 className="card-title" style={{ color: '#333', fontWeight: 'bold' }}>{artwork.title}</h5>
                                                 
-                                                {/* Eye-catching Price Design */}
                                                 <p className="card-text" style={{
                                                     color: '#333',
                                                     fontSize: '1.2rem',
@@ -163,7 +198,6 @@ const Gallery = () => {
                                                         INR {artwork.discountedPrice}
                                                     </span>
                                                 </p>
-                                                {/* Discount Percentage */}
                                                 <p style={{ color: '#28a745', fontWeight: 'bold', marginBottom: '10px' }}>
                                                     {discountPercent}% OFF
                                                 </p>
@@ -172,8 +206,8 @@ const Gallery = () => {
                                                 <p className="card-text" style={{ color: '#666' }}>Dimensions: {artwork.length}x{artwork.width}</p>
 
                                                 <div className="d-grid gap-2">
-                                                    <button className="btn btn-success">Add to Cart</button>
-                                                    <button className="btn btn-primary">Buy Now</button>
+                                                    <button className="btn btn-success" onClick={() => addToCart(artwork)}>Add to Cart</button>
+                                                    <button className="btn btn-primary" onClick={() => buyNow(artwork)}>Buy Now</button>
                                                 </div>
                                             </div>
                                         </div>

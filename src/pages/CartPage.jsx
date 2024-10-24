@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 const CartPage = () => {
-    // Sample cart data
-    const initialCartItems = [
+    // Initialize cart items from localStorage or use default values if not present
+    const initialCartItems = JSON.parse(localStorage.getItem('cartItems')) || [
         { id: 1, title: 'Artwork 1', price: 5000, quantity: 1 },
         { id: 2, title: 'Artwork 2', price: 3000, quantity: 1 },
     ];
 
     const [cartItems, setCartItems] = useState(initialCartItems);
     const [step, setStep] = useState(1); // Controls the step in the process (1: Address, 2: Payment, 3: Final Bill)
-    const [address, setAddress] = useState('');
-    const [paymentMethod, setPaymentMethod] = useState('');
+    const [address, setAddress] = useState(localStorage.getItem('address') || ''); // Persist address
+    const [paymentMethod, setPaymentMethod] = useState(localStorage.getItem('paymentMethod') || '');
     const [couponCode, setCouponCode] = useState(''); // Store coupon code entered by the user
     const [discount, setDiscount] = useState(0); // Store the discount percentage
     const [orderPlaced, setOrderPlaced] = useState(false);
@@ -29,6 +29,17 @@ const CartPage = () => {
     // Calculate discounted price after applying coupon
     const discountedPrice = totalPrice - (totalPrice * discount / 100);
 
+    // Save cart to localStorage when cartItems change
+    useEffect(() => {
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    }, [cartItems]);
+
+    // Save address and payment method to localStorage
+    useEffect(() => {
+        localStorage.setItem('address', address);
+        localStorage.setItem('paymentMethod', paymentMethod);
+    }, [address, paymentMethod]);
+
     // Delete an item from the cart
     const deleteItem = (id) => {
         const updatedCart = cartItems.filter(item => item.id !== id);
@@ -42,6 +53,11 @@ const CartPage = () => {
         } else {
             // Final step: place the order
             setOrderPlaced(true);
+            // Clear cart and address from localStorage after placing order
+            localStorage.removeItem('cartItems');
+            localStorage.removeItem('address');
+            localStorage.removeItem('paymentMethod');
+            setCartItems([]);
         }
     };
 

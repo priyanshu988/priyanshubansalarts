@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import Swal from 'sweetalert2';  // Import SweetAlert2
 
 const FeaturedArtworks = () => {
     const [artworks, setArtworks] = useState([]);
@@ -51,6 +52,48 @@ const FeaturedArtworks = () => {
         scrollContainer.current.scrollBy({ left: 300, behavior: 'smooth' });
     };
 
+    // Function to add artwork to the cart and store it in localStorage
+    const addToCart = (artwork) => {
+        const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        const itemInCart = cartItems.find(item => item.id === artwork.id);
+
+        if (itemInCart) {
+            itemInCart.quantity += 1;
+        } else {
+            cartItems.push({ ...artwork, quantity: 1 });
+        }
+
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+        // SweetAlert2 notification for adding to cart
+        Swal.fire({
+            title: 'Added to Cart!',
+            text: `${artwork.title} has been added to your cart.`,
+            icon: 'success',
+            confirmButtonText: 'OK'
+        });
+    };
+
+    // Function for Buy Now button: Move selected item to cart and remove others
+    const buyNow = (artwork) => {
+        // Clear the cart and add only the selected artwork
+        const newCartItem = [{ ...artwork, quantity: 1 }];
+        localStorage.setItem('cartItems', JSON.stringify(newCartItem));
+
+        // SweetAlert2 notification for buy now
+        Swal.fire({
+            title: 'Buy Now Successful!',
+            text: `${artwork.title} is now in your cart! Proceed to checkout.`,
+            icon: 'success',
+            confirmButtonText: 'Proceed to Checkout'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Optional: Navigate to the checkout page
+                window.location.href = '/cart';  // Example: Redirect to checkout page
+            }
+        });
+    };
+
     return (
         <div style={{ position: 'relative' }}>
             <section className="featured-artworks" style={{ padding: '50px 0', backgroundColor: '#e2e6ea' }}>
@@ -95,10 +138,14 @@ const FeaturedArtworks = () => {
                                                     <button
                                                         className="btn btn-primary"
                                                         style={{ marginRight: '10px', backgroundColor: '#007bff', border: 'none' }}
+                                                        onClick={() => buyNow(artwork)}
                                                     >
                                                         Buy Now
                                                     </button>
-                                                    <button className="btn btn-outline-secondary">
+                                                    <button
+                                                        className="btn btn-outline-secondary"
+                                                        onClick={() => addToCart(artwork)}
+                                                    >
                                                         Add to Cart
                                                     </button>
                                                 </div>
