@@ -28,6 +28,7 @@ const ManageBlog = () => {
 
       if (response.ok) {
         const result = await response.json();
+        console.log(result)
         alert('Blog added successfully!');
         // Optionally reset the form or redirect after submission
         setBlogData({
