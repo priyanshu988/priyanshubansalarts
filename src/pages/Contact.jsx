@@ -63,16 +63,16 @@ const Contact = () => {
                         </ul>
                         <h4 className="mb-3" style={{ fontWeight: 'bold', color: '#333' }}>Follow Us</h4>
                         <div>
-                            <a href="#" className="text-decoration-none" style={{ color: '#ff6347', marginRight: '15px' }}>
+                            <a href="https://www.facebook.com/" className="text-decoration-none" style={{ color: '#ff6347', marginRight: '15px' }}>
                                 <FontAwesomeIcon icon={faFacebookF} />
                             </a>
-                            <a href="#" className="text-decoration-none" style={{ color: '#ff6347', marginRight: '15px' }}>
+                            <a href="https://x.com/" className="text-decoration-none" style={{ color: '#ff6347', marginRight: '15px' }}>
                                 <FontAwesomeIcon icon={faTwitter} />
                             </a>
-                            <a href="#" className="text-decoration-none" style={{ color: '#ff6347', marginRight: '15px' }}>
+                            <a href="https://www.instagram.com/" className="text-decoration-none" style={{ color: '#ff6347', marginRight: '15px' }}>
                                 <FontAwesomeIcon icon={faInstagram} />
                             </a>
-                            <a href="#" className="text-decoration-none" style={{ color: '#ff6347', marginRight: '15px' }}>
+                            <a href="https://www.linkedin.com/" className="text-decoration-none" style={{ color: '#ff6347', marginRight: '15px' }}>
                                 <FontAwesomeIcon icon={faLinkedin} />
                             </a>
                         </div>
