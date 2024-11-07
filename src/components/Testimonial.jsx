@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 
+let REACT_APP_BACKEND_URI = "https://backend-pbarts.onrender.com";
+
 const Testimonial = () => {
     const [showLeftArrow, setShowLeftArrow] = useState(false);
     const [showRightArrow, setShowRightArrow] = useState(true);
@@ -11,7 +13,7 @@ const Testimonial = () => {
     useEffect(() => {
         const fetchTestimonials = async () => {
             try {
-                const response = await fetch('http://localhost:8000/api/testimonial');  // Replace with your actual API endpoint
+                const response = await fetch(`${REACT_APP_BACKEND_URI}/api/testimonial`);  // Replace with your actual API endpoint
                 const data = await response.json();
                 setTestimonials(data); // Set testimonials from backend
             } catch (error) {

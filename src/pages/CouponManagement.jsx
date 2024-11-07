@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+let REACT_APP_BACKEND_URI = "https://backend-pbarts.onrender.com";
+
+
 const CouponManagement = () => {
     const [coupons, setCoupons] = useState([]);
     const [message, setMessage] = useState('');
@@ -9,7 +12,7 @@ const CouponManagement = () => {
         // Fetch existing coupons from the API
         const fetchCoupons = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/api/coupons');
+                const response = await axios.get(`${REACT_APP_BACKEND_URI}/api/coupons`);
                 setCoupons(response.data);
             } catch (error) {
                 console.error('Error fetching coupons:', error);
@@ -22,7 +25,7 @@ const CouponManagement = () => {
 
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`http://localhost:8000/api/coupons/${id}`);
+            await axios.delete(`${REACT_APP_BACKEND_URI}/api/coupons/${id}`);
             setCoupons(coupons.filter(coupon => coupon._id !== id));
             setMessage('Coupon deleted successfully!');
         } catch (error) {

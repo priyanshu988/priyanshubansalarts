@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+let REACT_APP_BACKEND_URI = "https://backend-pbarts.onrender.com";
+
+
 const CreateCoupon = () => {
     const [code, setCode] = useState('');
     const [discountType, setDiscountType] = useState('percentage');
@@ -16,7 +19,7 @@ const CreateCoupon = () => {
         setMessage(''); // Clear previous messages
 
         try {
-            const response = await axios.post('http://localhost:8000/api/coupons/create', {
+            const response = await axios.post(`${REACT_APP_BACKEND_URI}/api/coupons/create`, {
                 code,
                 discountType,
                 discountValue,

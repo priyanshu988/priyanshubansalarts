@@ -3,6 +3,9 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Swal from 'sweetalert2';  // Import SweetAlert2
 
+
+let REACT_APP_BACKEND_URI = "https://backend-pbarts.onrender.com";
+
 const Gallery = () => {
     const [artworks, setArtworks] = useState([]);
     const [sortedArtworks, setSortedArtworks] = useState([]);
@@ -21,7 +24,7 @@ const Gallery = () => {
     useEffect(() => {
         const fetchArtworks = async () => {
             try {
-                const response = await fetch('http://localhost:8000/api/artworks');
+                const response = await fetch(`${REACT_APP_BACKEND_URI}/api/artworks`);
                 const data = await response.json();
                 setArtworks(data);
                 setSortedArtworks(data);

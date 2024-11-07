@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react';
 // import Axios or use fetch API directly
 // import axios from 'axios';
 
+
+let REACT_APP_BACKEND_URI = "https://backend-pbarts.onrender.com";
+
+
 const ManageTestimonials = () => {
     const [testimonials, setTestimonials] = useState([]);
     const [name, setName] = useState('');
@@ -13,7 +17,7 @@ const ManageTestimonials = () => {
     useEffect(() => {
         const fetchTestimonials = async () => {
             try {
-                const response = await fetch('http://localhost:8000/api/testimonial');
+                const response = await fetch(`${REACT_APP_BACKEND_URI}/api/testimonial`);
                 const data = await response.json();
                 setTestimonials(data);
             } catch (err) {

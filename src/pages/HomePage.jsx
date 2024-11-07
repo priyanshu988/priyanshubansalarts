@@ -9,6 +9,10 @@ import PromotionalOffers from '../components/PromotionalOffers';
 import Blog from '../components/Blog';
 import NewsletterSubscription from '../components/NewsletterSubscription';
 
+
+// let REACT_APP_BACKEND_URI = "https://backend-pbarts.onrender.com";
+
+
 function HomePage() {
   return (
     <div>

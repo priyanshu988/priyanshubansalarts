@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 
+
+let REACT_APP_BACKEND_URI = "https://backend-pbarts.onrender.com";
+
+
 const ManageBlog = () => {
   const [blogData, setBlogData] = useState({
     wallpaper: '',
@@ -18,7 +22,7 @@ const ManageBlog = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:8000/api/blog', {
+      const response = await fetch(`${REACT_APP_BACKEND_URI}/api/blog`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

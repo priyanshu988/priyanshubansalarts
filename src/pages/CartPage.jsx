@@ -3,6 +3,9 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Swal from 'sweetalert2';
 
+let REACT_APP_BACKEND_URI = "https://backend-pbarts.onrender.com";
+
+
 const CartPage = () => {
     // Initialize cart items from localStorage or use default values if not present
     const initialCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
@@ -66,7 +69,7 @@ const CartPage = () => {
     // Handle coupon code validation with backend
     const applyCoupon = async () => {
         try {
-            const response = await fetch(`http://localhost:8000/api/coupons/validate`, {
+            const response = await fetch(`${REACT_APP_BACKEND_URI}/api/coupons/validate`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

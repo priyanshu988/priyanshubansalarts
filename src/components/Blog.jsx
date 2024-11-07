@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 
+let REACT_APP_BACKEND_URI = "https://backend-pbarts.onrender.com";
+
 const Blog = () => {
     const [blogs, setBlogs] = useState([]);
     const [showLeftArrow, setShowLeftArrow] = useState(false);
@@ -10,7 +12,7 @@ const Blog = () => {
     useEffect(() => {
         const fetchBlogs = async () => {
             try {
-                const response = await fetch('http://localhost:8000/api/blog');
+                const response = await fetch(`${REACT_APP_BACKEND_URI}/api/blog`);
                 const data = await response.json();
                 setBlogs(data);
             } catch (error) {

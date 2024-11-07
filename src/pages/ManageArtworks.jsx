@@ -2,6 +2,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+
+let REACT_APP_BACKEND_URI = "https://backend-pbarts.onrender.com";
+
+
 const ManageArtworks = () => {
     const [artworks, setArtworks] = useState([]);
     const [newArtwork, setNewArtwork] = useState({
@@ -19,7 +23,7 @@ const ManageArtworks = () => {
     useEffect(() => {
         const fetchArtworks = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/api/artworks');
+                const response = await axios.get(`${REACT_APP_BACKEND_URI}/api/artworks`);
                 setArtworks(response.data);
             } catch (error) {
                 console.error('Error fetching artworks:', error);
