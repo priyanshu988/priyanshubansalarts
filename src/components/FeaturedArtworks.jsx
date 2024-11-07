@@ -3,6 +3,9 @@ import axios from 'axios';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import Swal from 'sweetalert2';  // Import SweetAlert2
 
+
+let REACT_APP_BACKEND_URI = "https://backend-pbarts.onrender.com";
+
 const FeaturedArtworks = () => {
     const [artworks, setArtworks] = useState([]);
     const [showLeftArrow, setShowLeftArrow] = useState(false);
@@ -13,7 +16,7 @@ const FeaturedArtworks = () => {
     useEffect(() => {
         const fetchArtworks = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/api/artworks?limit=5');
+                const response = await axios.get(`${REACT_APP_BACKEND_URI}/api/artworks?limit=5`);
                 setArtworks(response.data); // Assuming the API response contains an array of artworks
             } catch (error) {
                 console.error('Error fetching featured artworks:', error);
