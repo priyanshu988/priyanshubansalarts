@@ -16,8 +16,8 @@ import NewsletterSubscription from '../components/NewsletterSubscription';
 function HomePage() {
   return (
     <div>
-      {/* Navbar */}
-      <Navbar />
+      <Navbar />{/* Navbar */}
+      
 
       {/* Banner Section */}
       <Banner />

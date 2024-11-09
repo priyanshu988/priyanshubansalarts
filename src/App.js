@@ -13,6 +13,10 @@ import ManageBlog from './pages/ManageBlog';
 import ManageTestimonials from './pages/ManageTestimonials';
 import CreateCoupon from './pages/CreateCoupon';
 import CouponManagement from './pages/CouponManagement';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsAndConditionsPage from './pages/TermsAndConditionsPage';
+import CancellationRefund from './pages/CancellationRefund';
+import ShippingAndDeliveryPage from './pages/ShippingAndDeliveryPage';
 
 function AdminLayout() {
   return (
@@ -45,6 +49,10 @@ function App() {
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/cart" element={<CartPage />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-and-conditions" element={<TermsAndConditionsPage />} />
+          <Route path="/cancellation-refund" element={<CancellationRefund />} />
+          <Route path="/shipping-and-delivery" element={<ShippingAndDeliveryPage />} />
 
           {/* Admin route with nested routes */}
           <Route path='/admin/*' element={<AdminLayout />} />
