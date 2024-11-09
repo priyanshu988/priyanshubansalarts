@@ -25,17 +25,8 @@ const Blog = () => {
 
     const handleScroll = () => {
         const container = scrollContainer.current;
-        if (container.scrollLeft > 0) {
-            setShowLeftArrow(true);
-        } else {
-            setShowLeftArrow(false);
-        }
-
-        if (container.scrollLeft + container.offsetWidth < container.scrollWidth) {
-            setShowRightArrow(true);
-        } else {
-            setShowRightArrow(false);
-        }
+        setShowLeftArrow(container.scrollLeft > 0);
+        setShowRightArrow(container.scrollLeft + container.offsetWidth < container.scrollWidth);
     };
 
     useEffect(() => {
@@ -52,12 +43,8 @@ const Blog = () => {
         scrollContainer.current.scrollBy({ left: 300, behavior: 'smooth' });
     };
 
-    // Helper function to truncate text
     const truncateText = (text, limit) => {
-        if (text.length > limit) {
-            return text.substring(0, limit) + '...';
-        }
-        return text;
+        return text.length > limit ? text.substring(0, limit) + '...' : text;
     };
 
     return (
@@ -72,20 +59,38 @@ const Blog = () => {
                     >
                         {blogs.length > 0 ? (
                             blogs.map((blog) => (
-                                <div key={blog._id} className="col-md-4 col-9 mb-4" style={{ flex: '0 0 auto' }}>
-                                    <div className="card" style={{ boxShadow: '0 0 10px rgba(0,0,0,0.1)', borderRadius: '10px' }}>
+                                <div
+                                    key={blog._id}
+                                    className="col-md-4 col-9 mb-4"
+                                    style={{
+                                        flex: '0 0 auto',
+                                        display: 'flex',
+                                        justifyContent: 'center'
+                                    }}
+                                >
+                                    <div
+                                        className="card"
+                                        style={{
+                                            boxShadow: '0 0 10px rgba(0,0,0,0.1)',
+                                            borderRadius: '10px',
+                                            height: '500px', // Set equal height for all cards
+                                            display: 'flex',
+                                            flexDirection: 'column',
+                                            justifyContent: 'space-between'
+                                        }}
+                                    >
                                         <img 
                                             src={blog.wallpaper} 
                                             alt={blog.title} 
                                             className="card-img-top" 
-                                            style={{ borderRadius: '10px 10px 0 0' }} 
+                                            style={{ borderRadius: '10px 10px 0 0', height: '200px', objectFit: 'cover' }}
                                         />
-                                        <div className="card-body">
+                                        <div className="card-body" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', padding: '20px' }}>
                                             <h3 className="card-title" style={{ color: '#333', fontWeight: 'bold' }}>{blog.title}</h3>
                                             <p style={{ color: '#666', fontSize: '0.9rem' }}>
                                                 {truncateText(blog.shortDescription, 100)}
                                             </p>
-                                            <a href={blog.readMoreUrl} className="btn btn-secondary">Read More</a>
+                                            <a href={blog.readMoreUrl} className="btn btn-secondary mt-auto">Read More</a>
                                         </div>
                                     </div>
                                 </div>

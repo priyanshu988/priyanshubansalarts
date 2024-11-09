@@ -5,8 +5,18 @@ const NewsletterSubscription = () => {
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
 
+    const validateEmail = (email) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        if (!validateEmail(email)) {
+            setMessage("Please enter a valid email address.");
+            return;
+        }
 
         try {
             const response = await fetch(`${REACT_APP_BACKEND_URI}/api/newsletter/subscribe`, {
