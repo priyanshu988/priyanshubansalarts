@@ -77,10 +77,10 @@ const CartPage = () => {
 
     const handlePayment = () => {
         const options = {
-            key: process.env.REACT_APP_RAZORPAY_KEY_ID,
-            amount: discountedPrice * 100, // Convert to paisa
+            key: "rzp_live_g4rIjQso3bHB0c",
+            amount: (discount > 0 ? discountedPrice : totalPrice) * 100, // Convert to paisa
             currency: 'INR',
-            name: 'PB Arts',
+            name: 'Artistry by Priyanshu',
             description: 'Order Payment',
             handler: function (response) {
                 Swal.fire({
