@@ -17,27 +17,43 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsAndConditionsPage from './pages/TermsAndConditionsPage';
 import CancellationRefund from './pages/CancellationRefund';
 import ShippingAndDeliveryPage from './pages/ShippingAndDeliveryPage';
+import { useState } from 'react';
+import PasswordPopup from './components/PasswordPopup';
 
-function AdminLayout() {
+const AdminLayout = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const hardcodedPassword = '127';
+
+  const handlePasswordSubmit = (enteredPassword) => {
+      if (enteredPassword === hardcodedPassword) {
+          setIsAuthenticated(true);
+      } else {
+          alert("Incorrect password. Please try again.");
+      }
+  };
+
+  if (!isAuthenticated) {
+      return <PasswordPopup onPasswordSubmit={handlePasswordSubmit} />;
+  }
+
   return (
-    <div className="container-fluid">
-      <div className="row">
-        {/* Sidebar is always present in admin layout */}
-        <Sidebar />
-        <main className="col-md-9 ml-sm-auto col-lg-10 px-4">
-          <Routes>
-            <Route path="" element={<Dashboard />} />
-            <Route path="manage-artworks" element={<ManageArtworks />} />
-            <Route path="manage-blogs" element={<ManageBlog />} />
-            <Route path="manage-testimonials" element={<ManageTestimonials />} />
-            <Route path="create-coupon" element={<CreateCoupon />} />
-            <Route path="management-coupon" element={<CouponManagement />} />
-          </Routes>
-        </main>
+      <div className="container-fluid">
+          <div className="row">
+              <Sidebar />
+              <main className="col-md-9 ml-sm-auto col-lg-10 px-4">
+                  <Routes>
+                      <Route path="" element={<Dashboard />} />
+                      <Route path="manage-artworks" element={<ManageArtworks />} />
+                      <Route path="manage-blogs" element={<ManageBlog />} />
+                      <Route path="manage-testimonials" element={<ManageTestimonials />} />
+                      <Route path="create-coupon" element={<CreateCoupon />} />
+                      <Route path="management-coupon" element={<CouponManagement />} />
+                  </Routes>
+              </main>
+          </div>
       </div>
-    </div>
   );
-}
+};
 
 function App() {
   return (
