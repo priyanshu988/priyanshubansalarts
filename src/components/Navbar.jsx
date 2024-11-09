@@ -7,7 +7,7 @@ const Navbar = () => {
             <nav className="navbar navbar-expand-lg navbar-light" style={{ backgroundColor: '#f8f9fa' }}>
                 <div className="container-fluid">
                     <a className="navbar-brand" href="/" style={{ color: '#333', fontWeight: 'bold', fontSize: '1.5rem' }}>
-                        PB Art Studio
+                        Artistry by Priyanshu
                     </a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>

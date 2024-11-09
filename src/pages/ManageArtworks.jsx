@@ -65,7 +65,7 @@ const ManageArtworks = () => {
             }
 
             // Send the form data to the backend
-            const response = await axios.post('http://localhost:8000/api/artworks', formData, {
+            const response = await axios.post(`${REACT_APP_BACKEND_URI}/api/artworks`, formData, {
                 headers: { 'Content-Type': 'multipart/form-data' },
             });
 

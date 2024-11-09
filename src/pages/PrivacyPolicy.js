@@ -44,7 +44,7 @@ const PrivacyPolicy = () => {
             <p>We may update our Privacy Policy periodically. Any changes will be posted on this page, and we encourage you to review it regularly.</p>
 
             <h3>Contact Us</h3>
-            <p>If you have any questions or concerns about this Privacy Policy, please contact us at <a href="mailto:support@artistrybypriyanshu.com">support@artistrybypriyanshu.com</a>.</p>
+            <p>If you have any questions or concerns about this Privacy Policy, please contact us at <a href="mailto:priyanahuabansal94@gmail.com">support@artistrybypriyanshu.com</a>.</p>
         </div>
         <Footer/>
         </>

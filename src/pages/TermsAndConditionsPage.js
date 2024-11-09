@@ -40,7 +40,7 @@ const TermsAndConditionsPage = () => {
                     <h2>4. Return and Refund Policy</h2>
                     <p>
                         Our return and refund policy provides guidelines on how returns and refunds are processed. Please review our
-                        <a href="/return-policy" className="text-primary"> Return Policy</a> for more details.
+                        <a href="/cancellation-refund" className="text-primary"> Return Policy</a> for more details.
                     </p>
                 </section>
 
@@ -73,7 +73,7 @@ const TermsAndConditionsPage = () => {
                     <h2>8. Contact Us</h2>
                     <p>
                         If you have any questions about our Terms and Conditions, please contact us at
-                        <a href="mailto:support@pbarts.com" className="text-primary"> support@pbarts.com</a>.
+                        <a href="mailto:priyanahuabansal94@gmail.com" className="text-primary"> support@pbarts.com</a>.
                     </p>
                 </section>
 

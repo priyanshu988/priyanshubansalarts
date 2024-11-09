@@ -43,7 +43,7 @@ const ManageTestimonials = () => {
 
         try {
             setLoading(true);
-            const response = await fetch('http://localhost:8000/api/testimonial', {
+            const response = await fetch(`${REACT_APP_BACKEND_URI}/api/testimonial`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(newTestimonial),
@@ -69,7 +69,7 @@ const ManageTestimonials = () => {
     // Optionally, add delete functionality (you need to create the delete route)
     const handleDelete = async (id) => {
         try {
-            await fetch(`http://localhost:8000/api/testimonial/${id}`, { method: 'DELETE' });
+            await fetch(`${REACT_APP_BACKEND_URI}/api/testimonial/${id}`, { method: 'DELETE' });
             setTestimonials(testimonials.filter(testimonial => testimonial._id !== id));
         } catch (err) {
             setError('Error deleting testimonial');

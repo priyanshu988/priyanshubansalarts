@@ -8,7 +8,7 @@ const ShippingAndDeliveryPage = () => {
             <Navbar />
             <div className="container my-5">
                 <h1 className="text-center mb-4">Shipping and Delivery</h1>
-                
+
                 {/* Shipping Methods */}
                 <section className="mb-5">
                     <h3>Shipping Methods</h3>
@@ -21,7 +21,7 @@ const ShippingAndDeliveryPage = () => {
                         <li><strong>Overnight Shipping:</strong> Delivered by the next business day (additional fees apply).</li>
                     </ul>
                 </section>
-                
+
                 {/* Estimated Delivery Times */}
                 <section className="mb-5">
                     <h3>Estimated Delivery Times</h3>
@@ -73,10 +73,10 @@ const ShippingAndDeliveryPage = () => {
                     <p>
                         Once your order has shipped, you will receive an email with tracking information. You can use this information to track your package online. If you have any questions about your order status, please contact our customer support.
                     </p>
-                    <p><strong>Customer Support Email:</strong> support@pbarts.com</p>
-                    <p><strong>Phone:</strong> +91 1234567890</p>
+                    <p><strong>Customer Support Email:</strong> priyanahuabansal94@gmail.com</p>
+                    <p><strong>Phone:</strong> +91 9887903310</p>
                 </section>
-                
+
                 {/* Additional Information */}
                 <section className="mb-5">
                     <h3>Additional Information</h3>

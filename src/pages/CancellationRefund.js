@@ -1,14 +1,18 @@
 import React from 'react';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 const CancellationRefund = () => {
     return (
+        <>
+        <Navbar/>
         <div className="container mt-5 mb-5">
             <h1 className="text-center mb-4">Cancellation and Refund Policy</h1>
             <div className="card p-4 shadow-sm">
                 <h3>Order Cancellations</h3>
                 <p>
                     You may cancel your order at any time before it has been shipped. Once an order is shipped, it cannot be canceled. 
-                    To cancel an order, please contact our support team at <a href="mailto:support@pbarts.com">support@pbarts.com</a> with your order details.
+                    To cancel an order, please contact our support team at <a href="mailto:priyanahuabansal94@gmail.com">support@pbarts.com</a> with your order details.
                 </p>
 
                 <h3>Refund Eligibility</h3>
@@ -31,7 +35,7 @@ const CancellationRefund = () => {
                 <p>
                     If you need to return an item, please follow these steps:
                     <ol>
-                        <li>Contact our support team at <a href="mailto:support@pbarts.com">support@pbarts.com</a> with your order ID and reason for return.</li>
+                        <li>Contact our support team at <a href="mailto:priyanahuabansal94@gmail.com">support@pbarts.com</a> with your order ID and reason for return.</li>
                         <li>Our team will provide instructions for the return, if eligible.</li>
                         <li>Once we receive and inspect the returned item, we will process the refund if applicable.</li>
                     </ol>
@@ -45,10 +49,12 @@ const CancellationRefund = () => {
 
                 <h3>Contact Us</h3>
                 <p>
-                    If you have any questions or concerns about our Cancellation and Refund Policy, please reach out to us at <a href="mailto:support@pbarts.com">support@pbarts.com</a>.
+                    If you have any questions or concerns about our Cancellation and Refund Policy, please reach out to us at <a href="mailto:priyanahuabansal94@gmail.com">support@pbarts.com</a>.
                 </p>
             </div>
         </div>
+        <Footer/>
+        </>
     );
 };
 
