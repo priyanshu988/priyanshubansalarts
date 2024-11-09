@@ -78,9 +78,9 @@ const CartPage = () => {
     const handlePayment = () => {
         const options = {
             key: "rzp_live_g4rIjQso3bHB0c",
-            amount: (discount > 0 ? discountedPrice : totalPrice) * 100, // Convert to paisa
+            amount: discountedPrice * 100, // Convert to paisa
             currency: 'INR',
-            name: 'Artistry by Priyanshu',
+            name: 'PB Arts',
             description: 'Order Payment',
             handler: function (response) {
                 Swal.fire({
@@ -112,12 +112,52 @@ const CartPage = () => {
         rzp.open();
     };
 
-    const completeOrder = () => {
-        setOrderPlaced(true);
-        localStorage.removeItem('cartItems');
-        localStorage.removeItem('address');
-        localStorage.removeItem('paymentMethod');
-        setCartItems([]);
+    const completeOrder = async () => {
+        const orderData = {
+            userId: "customer-id-placeholder", // Replace with actual user ID if you have user authentication
+            items: cartItems.map(item => ({
+                productId: item.id,
+                quantity: item.quantity,
+                price: item.discountedPrice,
+            })),
+            totalAmount: discountedPrice,
+            address,
+            paymentMethod,
+        };
+
+        try {
+            const response = await fetch(`${REACT_APP_BACKEND_URI}/api/orders`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(orderData),
+            });
+
+            if (response.ok) {
+                setOrderPlaced(true);
+                Swal.fire({
+                    title: 'Order Confirmed!',
+                    text: 'Your order has been placed successfully. Thank you for shopping with us!',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                });
+                localStorage.removeItem('cartItems');
+                localStorage.removeItem('address');
+                localStorage.removeItem('paymentMethod');
+                setCartItems([]);
+            } else {
+                throw new Error('Failed to place order');
+            }
+        } catch (error) {
+            console.error('Error placing order:', error);
+            Swal.fire({
+                title: 'Order Failed',
+                text: 'There was an issue placing your order. Please try again later.',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+        }
     };
 
     return (
