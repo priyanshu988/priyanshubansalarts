@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Typed from 'typed.js';
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // Import AOS styles
 import Portfolio from './Portfolio';
 
 const LandingPage = () => {
-  const [isMobileNavActive, setMobileNavActive] = useState(false);
-  const [backToTopVisible, setBackToTopVisible] = useState(false);
-  const [activeSection, setActiveSection] = useState(null);
+  // const [isMobileNavActive, setMobileNavActive] = useState(false);
+  // const [backToTopVisible, setBackToTopVisible] = useState(false);
+  // const [activeSection, setActiveSection] = useState(null);
+  
   useEffect(() => {
     // Preloader
     const preloader = document.getElementById('preloader');
@@ -35,51 +36,51 @@ const LandingPage = () => {
       AOS.init({ duration: 1000, once: true });
     }
 
-    // Scroll listener for Back to Top button
-    const handleScroll = () => {
-      const scrollPos = window.scrollY;
-      setBackToTopVisible(scrollPos > 100);
+    // // Scroll listener for Back to Top button
+    // const handleScroll = () => {
+    //   const scrollPos = window.scrollY;
+    //   setBackToTopVisible(scrollPos > 100);
 
-      // Handle active section highlighting
-      const sections = document.querySelectorAll('section');
-      let currentSection = null;
-      sections.forEach((section) => {
-        const top = section.offsetTop;
-        const bottom = top + section.offsetHeight;
-        if (scrollPos >= top && scrollPos <= bottom) {
-          currentSection = section.id;
-        }
-      });
+    //   // Handle active section highlighting
+    //   const sections = document.querySelectorAll('section');
+    //   let currentSection = null;
+    //   sections.forEach((section) => {
+    //     const top = section.offsetTop;
+    //     const bottom = top + section.offsetHeight;
+    //     if (scrollPos >= top && scrollPos <= bottom) {
+    //       currentSection = section.id;
+    //     }
+    //   });
 
-      setActiveSection(currentSection);
-    };
+    //   setActiveSection(currentSection);
+    // };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    // window.addEventListener('scroll', handleScroll);
+    // return () => {
+    //   window.removeEventListener('scroll', handleScroll);
+    // };
   }, []);
   // Scroll to section handler
-  const scrollToSection = (e, hash) => {
-    e.preventDefault();
-    const target = document.querySelector(hash);
-    if (target) {
-      window.scrollTo({
-        top: target.offsetTop,
-        behavior: 'smooth',
-      });
-    }
-  };
+  // const scrollToSection = (e, hash) => {
+  //   e.preventDefault();
+  //   const target = document.querySelector(hash);
+  //   if (target) {
+  //     window.scrollTo({
+  //       top: target.offsetTop,
+  //       behavior: 'smooth',
+  //     });
+  //   }
+  // };
 
-  const toggleMobileNav = () => {
-    setMobileNavActive(!isMobileNavActive);
-  };
+  // const toggleMobileNav = () => {
+  //   setMobileNavActive(!isMobileNavActive);
+  // };
 
-  const closeMobileNav = (e) => {
-    if (!e.target.closest('.mobile-nav-toggle')) {
-      setMobileNavActive(false);
-    }
-  };
+  // const closeMobileNav = (e) => {
+  //   if (!e.target.closest('.mobile-nav-toggle')) {
+  //     setMobileNavActive(false);
+  //   }
+  // };
 
   return (
     <>
