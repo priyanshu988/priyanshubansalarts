@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import artworks from "./portfolio.json";
+import artworks from "./output.json";
 
 
 const Portfolio = () => {
@@ -49,25 +49,32 @@ const Portfolio = () => {
                 All
               </li>
               <li
-                data-filter=".filter-poster"
-                className={filter === "filter-poster" ? "filter-active" : ""}
-                onClick={() => handleFilterClick("filter-poster")}
+                data-filter=".filter-6-6"
+                className={filter === "filter-6-6" ? "filter-active" : ""}
+                onClick={() => handleFilterClick("filter-6-6")}
               >
-                Poster
+                6 x 6
               </li>
               <li
-                data-filter=".filter-card"
-                className={filter === "filter-card" ? "filter-active" : ""}
-                onClick={() => handleFilterClick("filter-card")}
+                data-filter=".filter-6-8"
+                className={filter === "filter-6-8" ? "filter-active" : ""}
+                onClick={() => handleFilterClick("filter-6-8")}
               >
-                Logo
+                6 x 8
               </li>
               <li
-                data-filter=".filter-ad"
-                className={filter === "filter-ad" ? "filter-active" : ""}
-                onClick={() => handleFilterClick("filter-ad")}
+                data-filter=".filter-8-10"
+                className={filter === "filter-8-10" ? "filter-active" : ""}
+                onClick={() => handleFilterClick("filter-8-10")}
               >
-                Ads
+                8 x 10
+              </li>
+              <li
+                data-filter=".filter-10-12"
+                className={filter === "filter-10-12" ? "filter-active" : ""}
+                onClick={() => handleFilterClick("filter-10-12")}
+              >
+                10 x 12
               </li>
             </ul>
           </div>

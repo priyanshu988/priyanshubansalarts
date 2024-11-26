@@ -1,9 +1,10 @@
 [
     {
         "id": 1,
-        "filter": "filter-poster",
+        "filter": "filter-8-10",
         "imgSrc": "https://res.cloudinary.com/dy4qtchbm/image/upload/v1732255404/14fee250-a816-11ef-808a-6d7a2c546d6e_wkzmfm.jpg",
         "title": "Aqua Glow",
+        "description": "This painting is a stunning interplay of Impressionism and Abstract Realism, portraying a swirling ocean of vibrant blues and greens, textured to mimic the rhythm of flowing water. At its heart floats a realistic jellyfish, illuminated by its ethereal glow. The jellyfish’s tendrils extend delicately, creating an almost mystical connection between the realistic and the abstract.",
         "category": "Acrylic on Canvas",
         "images": [
             "https://res.cloudinary.com/dy4qtchbm/image/upload/v1732255404/14fee250-a816-11ef-808a-6d7a2c546d6e_wkzmfm.jpg",
@@ -11,6 +12,8 @@
             "https://res.cloudinary.com/dy4qtchbm/image/upload/v1732255432/fc057390-a815-11ef-808a-6d7a2c546d6e_xwsgab.jpg",
             "https://res.cloudinary.com/dy4qtchbm/image/upload/v1732255398/1e3659c0-a816-11ef-808a-6d7a2c546d6e_dzvd4t.jpg"
         ],
+        "price": 5000,
+        "discount": 2000,
         "imageLink": "https://res.cloudinary.com/dy4qtchbm/image/upload/v1732255404/14fee250-a816-11ef-808a-6d7a2c546d6e_wkzmfm.jpg"
     },
     {
@@ -18,12 +21,15 @@
         "filter": "filter-card",
         "imgSrc": "https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg",
         "title": "Logo Design",
+        "description": "This painting is a stunning interplay of Impressionism and Abstract Realism, portraying a swirling ocean of vibrant blues and greens, textured to mimic the rhythm of flowing water. At its heart floats a realistic jellyfish, illuminated by its ethereal glow. The jellyfish’s tendrils extend delicately, creating an almost mystical connection between the realistic and the abstract.",
         "category": "Logo",
         "images": [
             "https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg",
             "https://images.pexels.com/photos/1165446/pexels-photo-1165446.jpeg",
             "https://images.pexels.com/photos/1165445/pexels-photo-1165445.jpeg"
         ],
+        "price": 5000,
+        "discount": 2000,
         "imageLink": "https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg"
     }
 ]

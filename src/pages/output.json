@@ -1,0 +1,82 @@
+[
+  {
+    "id": "1",
+    "title": "Aqua Glow",
+    "description": "This painting is a stunning interplay of Impressionism and Abstract Realism, portraying a swirling ocean of vibrant blues and greens, textured to mimic the rhythm of flowing water. At its heart floats a realistic jellyfish, illuminated by its ethereal glow. The jellyfish’s tendrils extend delicately, creating an almost mystical connection between the realistic and the abstract.",
+    "filter": "filter-8-10",
+    "imgSrc": "https://res.cloudinary.com/dy4qtchbm/image/upload/v1732255404/14fee250-a816-11ef-808a-6d7a2c546d6e_wkzmfm.jpg",
+    "images": [
+      "https://res.cloudinary.com/dy4qtchbm/image/upload/v1732255404/14fee250-a816-11ef-808a-6d7a2c546d6e_wkzmfm.jpg",
+      "https://res.cloudinary.com/dy4qtchbm/image/upload/v1732255404/06c0cbe0-a816-11ef-808a-6d7a2c546d6e_xmlbj9.jpg",
+      "https://res.cloudinary.com/dy4qtchbm/image/upload/v1732255432/fc057390-a815-11ef-808a-6d7a2c546d6e_xwsgab.jpg",
+      "https://res.cloudinary.com/dy4qtchbm/image/upload/v1732255398/1e3659c0-a816-11ef-808a-6d7a2c546d6e_dzvd4t.jpg"
+    ],
+    "category": "Acrylic on Canvas",
+    "price": "5000",
+    "discount": "2000"
+  },
+  {
+    "id": "2",
+    "title": "Galactic Kedarnath",
+    "description": "This painting depicts the Kedarnath Temple, standing gracefully with its intricate stone architecture, bathed in the glow of a cosmic space galaxy in the background. The temple’s sacred presence contrasts against the vastness of space, where swirling stars, nebulae, and distant galaxies create an awe-inspiring, otherworldly atmosphere. The temple, isolated and yet profound, becomes a symbol of spirituality amidst the infinite expanse of the universe.",
+    "filter": "filter-8-10",
+    "imgSrc": "https://res.cloudinary.com/dy4qtchbm/image/upload/v1732255427/f22315c0-a7cb-11ef-b6c8-01ec56dbcd77_exxscq.jpg",
+    "images": [
+      "https://res.cloudinary.com/dy4qtchbm/image/upload/v1732255427/f22315c0-a7cb-11ef-b6c8-01ec56dbcd77_exxscq.jpg",
+      " https://res.cloudinary.com/dy4qtchbm/image/upload/v1732255428/ea47d2f0-a7cb-11ef-b6c8-01ec56dbcd77_ihnawo.jpg",
+      " https://res.cloudinary.com/dy4qtchbm/image/upload/v1732255419/d7c953b0-a7cb-11ef-b6c8-01ec56dbcd77_s9tqd0.jpg",
+      " https://res.cloudinary.com/dy4qtchbm/image/upload/v1732255418/c0269b50-a7cb-11ef-b6c8-01ec56dbcd77_xbwxfa.jpg"
+    ],
+    "category": "Acrylic on Canvas",
+    "price": "5000",
+    "discount": "2000"
+  },
+  {
+    "id": "3",
+    "title": "Lamp in the Rain",
+    "description": "This painting captures a serene yet melancholic moment on a rainy evening. The focal point is a street lamp, its soft, warm light casting a gentle glow on the surrounding scene. On the left side, wet leaves glisten under the light, their rich green hues darkened by the rain, giving a sense of quiet life even in the gloom. The right side of the background is drenched in the shadowy tones of a rainy, dark evening, with the rain softly blurring the view into the distance, adding a layer of mystery to the scene.",
+    "filter": "filter-6-8",
+    "imgSrc": "https://res.cloudinary.com/dy4qtchbm/image/upload/v1732255415/669c6330-a7bc-11ef-b02c-3726e00c7dd6_lmhatg.jpg",
+    "images": [
+      "https://res.cloudinary.com/dy4qtchbm/image/upload/v1732255415/669c6330-a7bc-11ef-b02c-3726e00c7dd6_lmhatg.jpg",
+      " https://res.cloudinary.com/dy4qtchbm/image/upload/v1732255421/e8f92310-a62f-11ef-8986-356a75d0e12b_cmrf9v.jpg",
+      " https://res.cloudinary.com/dy4qtchbm/image/upload/v1732255431/fc1f16b0-a7c0-11ef-9205-3bfb7b3523f4_vsqwiv.jpg",
+      " https://res.cloudinary.com/dy4qtchbm/image/upload/v1732255432/d546c880-a7c0-11ef-9205-3bfb7b3523f4_mrucea.jpg"
+    ],
+    "category": "Acrylic on Canvas",
+    "price": "4000",
+    "discount": "2000"
+  },
+  {
+    "id": "4",
+    "title": "Shiva's Tranquil Gaze",
+    "description": "This square painting captures the serene side profile of Lord Shiva in deep meditation. His calm and composed expression reflects inner peace and wisdom, with subtle details highlighting his divine features. The tranquil aura invites a sense of stillness and spiritual contemplation.",
+    "filter": "filter-6-6",
+    "imgSrc": "https://res.cloudinary.com/dy4qtchbm/image/upload/v1732255412/70c69ae0-a7c3-11ef-a668-7f8180cb4e1d_e4jxuy.jpg",
+    "images": [
+      "https://res.cloudinary.com/dy4qtchbm/image/upload/v1732255412/70c69ae0-a7c3-11ef-a668-7f8180cb4e1d_e4jxuy.jpg",
+      "  https://res.cloudinary.com/dy4qtchbm/image/upload/v1732255405/83b8c380-a7c3-11ef-a668-7f8180cb4e1d_eh2kaa.jpg",
+      "  https://res.cloudinary.com/dy4qtchbm/image/upload/v1732255398/7b698930-a7c3-11ef-a668-7f8180cb4e1d_tqcyj9.jpg",
+      " https://res.cloudinary.com/dy4qtchbm/image/upload/v1732255425/937dc810-a7c3-11ef-a668-7f8180cb4e1d_txzzf7.jpg"
+    ],
+    "category": "Acrylic on Canvas",
+    "price": "3000",
+    "discount": "2000"
+  },
+  {
+    "id": "5",
+    "title": "Boho Ganesha",
+    "description": "A serene side view of Lord Ganesha’s face, captured in a tranquil, meditative expression. The bohemian-inspired design embraces intricate patterns, earthy tones, and free-spirited details, reflecting a sense of peace and spiritual awakening. This artwork blends traditional symbolism with a modern boho flair, inviting a sense of calm and mindfulness.",
+    "filter": "filter-8-10",
+    "imgSrc": "https://res.cloudinary.com/dy4qtchbm/image/upload/v1732255425/e1154990-a683-11ef-a052-99609a3eea0a_ykdokq.jpg",
+    "images": [
+      "https://res.cloudinary.com/dy4qtchbm/image/upload/v1732255425/e1154990-a683-11ef-a052-99609a3eea0a_ykdokq.jpg",
+      " https://res.cloudinary.com/dy4qtchbm/image/upload/v1732255416/c8130130-a683-11ef-a052-99609a3eea0a_pgjff5.jpg",
+      " https://res.cloudinary.com/dy4qtchbm/image/upload/v1732255412/ade88c80-a683-11ef-a052-99609a3eea0a_zu9r08.jpg",
+      " https://res.cloudinary.com/dy4qtchbm/image/upload/v1732255404/0231b280-a684-11ef-a052-99609a3eea0a_an6xqt.jpg"
+    ],
+    "category": "Acrylic on Canvas",
+    "price": "5000",
+    "discount": "2000"
+  }
+]
