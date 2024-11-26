@@ -25,7 +25,7 @@ const ArtworkDetails = () => {
         <div className="container">
           <button
             className="btn btn-outline-primary"
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/#portfolio")}
           >
             Back to Home
           </button>
