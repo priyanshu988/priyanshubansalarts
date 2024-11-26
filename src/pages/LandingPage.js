@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import Typed from 'typed.js';
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // Import AOS styles
-import Portfolio from './Portfolio';
+import Portfolio from './Portfolio.jsx';
 
 const LandingPage = () => {
   // const [isMobileNavActive, setMobileNavActive] = useState(false);
@@ -124,7 +124,7 @@ const LandingPage = () => {
 
           <div class="row">
             <div class="col-lg-4">
-              <img src="https://media.licdn.com/dms/image/v2/D5603AQEjwPYUTrG85Q/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1706081074760?e=1737590400&v=beta&t=08nm8nkIyN_iQFur2dYCQxd3JEOj5901yJ2h0Km5F3Y" class="img-fluid" alt="" />
+              <img src="https://res.cloudinary.com/dy4qtchbm/image/upload/v1732254726/10244976_18354586_one3m8.jpg" class="img-fluid" alt="" />
             </div>
             <div class="col-lg-8 pt-4 pt-lg-0 content">
               <h3>SDE &amp; Part-Time Artist</h3>

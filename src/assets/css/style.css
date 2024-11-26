@@ -4,6 +4,55 @@
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
+.slick-prev:before, .slick-next:before {
+  color: black;
+}
+.slick-dots li button:before {
+  color: gray;
+}
+.slick-dots li.slick-active button:before {
+  color: black;
+}
+.artwork-details .preview-image img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.2s, border 0.2s;
+}
+
+.artwork-details .preview-image img:hover {
+  transform: scale(1.1);
+}
+
+.artwork-details .preview-image img[style*="2px solid blue"] {
+  border: 2px solid blue;
+}
+.preview-container {
+  max-height: 480px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.preview-image {
+  cursor: pointer;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.preview-image img {
+  width: 100%;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.preview-image.active {
+  border: 2px solid blue;
+}
 
 /*--------------------------------------------------------------
 # General
@@ -247,7 +296,7 @@ h1, h2, h3, h4, h5, h6 {
 #hero {
   width: 100%;
   height: 100vh;
-  background: url("../img/hero-bg.jpg") top right no-repeat;
+  background: url("https://res.cloudinary.com/dy4qtchbm/image/upload/v1732254216/bg-image_rtxbhf.jpg") top right no-repeat;
   background-size: cover;
   position: relative;
 }

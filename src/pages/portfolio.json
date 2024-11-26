@@ -1,0 +1,29 @@
+[
+    {
+        "id": 1,
+        "filter": "filter-poster",
+        "imgSrc": "https://res.cloudinary.com/dy4qtchbm/image/upload/v1732255404/14fee250-a816-11ef-808a-6d7a2c546d6e_wkzmfm.jpg",
+        "title": "Aqua Glow",
+        "category": "Acrylic on Canvas",
+        "images": [
+            "https://res.cloudinary.com/dy4qtchbm/image/upload/v1732255404/14fee250-a816-11ef-808a-6d7a2c546d6e_wkzmfm.jpg",
+            "https://res.cloudinary.com/dy4qtchbm/image/upload/v1732255404/06c0cbe0-a816-11ef-808a-6d7a2c546d6e_xmlbj9.jpg",
+            "https://res.cloudinary.com/dy4qtchbm/image/upload/v1732255432/fc057390-a815-11ef-808a-6d7a2c546d6e_xwsgab.jpg",
+            "https://res.cloudinary.com/dy4qtchbm/image/upload/v1732255398/1e3659c0-a816-11ef-808a-6d7a2c546d6e_dzvd4t.jpg"
+        ],
+        "imageLink": "https://res.cloudinary.com/dy4qtchbm/image/upload/v1732255404/14fee250-a816-11ef-808a-6d7a2c546d6e_wkzmfm.jpg"
+    },
+    {
+        "id": 2,
+        "filter": "filter-card",
+        "imgSrc": "https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg",
+        "title": "Logo Design",
+        "category": "Logo",
+        "images": [
+            "https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg",
+            "https://images.pexels.com/photos/1165446/pexels-photo-1165446.jpeg",
+            "https://images.pexels.com/photos/1165445/pexels-photo-1165445.jpeg"
+        ],
+        "imageLink": "https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg"
+    }
+]

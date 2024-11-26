@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import artworks from "./portfolio.json";
+
 
 const Portfolio = () => {
     const [filter, setFilter] = useState("*");
@@ -14,27 +16,7 @@ const Portfolio = () => {
   }, []);
 
   // Portfolio items data
-  const portfolioItems = [
-    {
-      id: 1,
-      filter: "filter-poster",
-      imgSrc: "https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg",
-    title: "Event Banner",
-      category: "Poster",
-      detailsLink: "portfolio-details.html",
-      imageLink: "https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg"
-    },
-    {
-      id: 2,
-      filter: "filter-card",
-      imgSrc: "https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg",
-      title: "Logo Design",
-      category: "Logo",
-      detailsLink: "portfolio-details.html",
-      imageLink: "https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg"
-    },
-    
-  ];
+  const portfolioItems = artworks;
 
   const handleFilterClick = (category) => {
     setFilter(category);
@@ -104,15 +86,7 @@ const Portfolio = () => {
                   <p>{item.category}</p>
                   <div className="portfolio-links">
                     <a
-                      href={item.imageLink}
-                      data-gall="portfolioGallery"
-                      className="venobox"
-                      title={item.title}
-                    >
-                      <i className="bx bx-plus"></i>
-                    </a>
-                    <a
-                      href={item.detailsLink}
+                      href={`/artwork/${item.id}`}
                       data-gall="portfolioDetailsGallery"
                       data-vbtype="iframe"
                       className="venobox"
